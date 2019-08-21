@@ -17,16 +17,6 @@ jobs:
       script: mvn verify
     - stage: package
       script: mvn package
-    - stage: deploy
-      script: skip
-      deploy: 
-        # env:
-        #   - GITHUB_REPO: "janny/hello-world-mule"
-        provider: script
-        script: bash script/deploy.sh
-        on: 
-          branch:
-            master
 
 after_install:
   - ls -al $HOME/
