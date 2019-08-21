@@ -1,0 +1,38 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories: 
+  - $HOME/.m2
+dist: trusty
+before_cache:
+  - echo "before caching"
+  - ls $HOME/
+  - ls $HOME/.m2
+jobs:
+  include:
+    - stage: test
+      script: mvn verify
+    - stage: package
+      script: mvn package
+    - stage: deploy
+      script: skip
+      deploy: 
+        # env:
+        #   - GITHUB_REPO: "janny/hello-world-mule"
+        provider: script
+        script: bash script/deploy.sh
+        on: 
+          branch:
+            master
+
+after_install:
+  - ls -al $HOME/
+  - ls -al $HOME/.m2
+before_install:
+  - ls -al $HOME/
+  - ls -al $HOME/.m2
+before_script:
+  - echo "**************** before script ********************"
