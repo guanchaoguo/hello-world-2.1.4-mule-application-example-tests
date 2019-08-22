@@ -59,9 +59,7 @@ workflows:
    scheduled:
      triggers:
        - schedule:
-           cron: 
-             - "50 2 * * *"
-             - "55 2 * * *"
+           cron: "50 2 * * *"
            filters:
              branches:
                only:
