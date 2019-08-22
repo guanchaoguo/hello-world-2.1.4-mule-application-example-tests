@@ -69,10 +69,10 @@ workflows:
    scheduled2:
      triggers:
        - schedule:
-           cron: "52 14 * * *"
+           cron: "58 14 * * *"
            filters:
              branches:
                only:
                  - master
      jobs:
-       - build
+       - package
