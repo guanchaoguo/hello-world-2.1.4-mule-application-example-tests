@@ -56,3 +56,15 @@ workflows:
        - package:
           requires:
             - build
+   scheduled:
+     triggers:
+       - schedule:
+           cron: 
+             - "50 2 * * *"
+             - "55 2 * * *"
+           filters:
+             branches:
+               only:
+                 - master
+     jobs:
+       - build
